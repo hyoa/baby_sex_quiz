@@ -1,7 +1,7 @@
 <template>
   <div class="w-full px-12 py-5 md:w-9/12 mx-auto">
     <H1>Fille ou garçon ?</H1>
-    <form @submit.stop="onSubmit">
+    <form @submit.stop.prevent="onSubmit">
       <div>
         <div class="flex justify-around">
           <div
