@@ -4,12 +4,14 @@
     <form @submit.stop="onSubmit">
       <div class="flex justify-around">
         <div
+          :class="{ 'opacity-50' : sex === 'f', 'shadow-lg' : sex === 'm' }"
           class="border rounded-full bg-blue-500 w-20 h-20 flex justify-center items-center text-white cursor-pointer hover:bg-blue-700 hover:shadow-md"
           @click="sex = 'm'"
         >
           <font-awesome-icon class="text-3xl" icon="mars" />
         </div>
         <div
+          :class="{ 'opacity-50' : sex === 'm', 'shadow-lg' : sex === 'f' }"
           class="border rounded-full w-20 h-20 flex justify-center items-center bg-pink-500 text-white cursor-pointer hover:bg-pink-700 hover:shadow-md"
           @click="sex = 'f'"
         >
