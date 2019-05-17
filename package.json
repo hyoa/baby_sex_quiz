@@ -5,12 +5,22 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lambda:run": "netlify-lambda serve src/lambda",
+    "lambda:build": "netlify-lambda build src/lambda"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
+    "axios": "^0.18.0",
+    "chart.js": "^2.8.0",
     "core-js": "^2.6.5",
+    "mongoose": "^5.5.9",
+    "netlify-lambda": "^1.4.9",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
+    "vue-chartjs": "^3.4.2",
     "vue-router": "^3.0.3"
   },
   "devDependencies": {
