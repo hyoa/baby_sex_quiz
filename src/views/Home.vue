@@ -181,6 +181,7 @@ export default {
       const { status } = await axios.post('/.netlify/functions/submit', answer)
 
       if (status === 200) {
+        localStorage.setItem('sex_quiz_answered', '1')
         this.$router.push('/resultat')
       }
     }
