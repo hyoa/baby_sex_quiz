@@ -4,6 +4,7 @@
       {{ label }}
     </label>
     <input
+      :class="{ 'border-red-500' : error }"
       class="appearance-none block w-full bg-gray-200 text-gray-800 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray"
       :type="type"
       :id="name"
@@ -11,13 +12,14 @@
       :value="value"
       @input="$emit('input', $event.target.value)"
     >
+    <p v-if="error" class="text-red-500 text-xs italic">{{ error }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Input',
-  props: ['name', 'placeholder', 'label', 'type', 'value']
+  props: ['name', 'placeholder', 'label', 'type', 'value', 'error']
 }
 </script>
 
