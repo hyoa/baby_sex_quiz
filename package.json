@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lambda:run": "netlify-lambda serve src/lambda",
-    "lambda:build": "netlify-lambda build src/lambda"
+    "lambda:build": "netlify-lambda build src/lambda",
+    "build:all": "npm run lambda:build && npm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
