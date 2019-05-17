@@ -62,6 +62,9 @@
         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Enregistrer</button>
       </div>
     </form>
+    <div class="text-center mt-6">
+      <router-link class="text-blue-400 underline hover:no-underline hover:text-blue-600" :to="{ name: 'result' }">Voir les résultats</router-link>
+    </div>
   </div>
 </template>
 
