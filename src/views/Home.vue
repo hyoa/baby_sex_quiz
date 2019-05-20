@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-12 py-5 md:w-9/12 mx-auto">
+  <div class="w-full px-12 py-5 md:w-1/2 lg:w-1/3 mx-auto">
     <H1>Fille ou garçon ?</H1>
     <form @submit.stop.prevent="onSubmit">
       <div>

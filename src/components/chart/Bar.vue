@@ -10,6 +10,8 @@ export default {
       labels: []
     }
 
+    this.stats = this.stats.sort(this.compareObject)
+
     for (let stat of this.stats) {
       data.datasets[0].data.push(stat.number)
       data.labels.push(stat._id)
@@ -29,7 +31,8 @@ export default {
         scales: {
           xAxes: [{
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              precision: 0
             }
           }]
         }
@@ -47,11 +50,16 @@ export default {
         color += letters[Math.floor(Math.random() * 16)]
       }
       return color
+    },
+    compareObject (a, b) {
+      if (a.number < b.number) {
+        return 1
+      }
+      if (a.number > b.number) {
+        return -1
+      }
+      return 0
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
