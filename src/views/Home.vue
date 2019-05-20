@@ -59,7 +59,15 @@
         <Input name="email" type="email" label="Email" v-model="email" :error="errors.email"/>
       </div>
       <div class="mt-4 text-center">
-        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Enregistrer</button>
+        <button
+          class="text-white font-bold py-2 px-4 rounded"
+          type="submit"
+          :disabled="submitting"
+          :class="{ 'cursor-not-allowed opacity-50 bg-gray-500' : submitting, 'bg-green-500 hover:bg-green-700 ': !submitting }"
+        >
+          {{ submitButtonText }}
+          <font-awesome-icon v-if="submitting" icon="spinner" spin />
+        </button>
       </div>
     </form>
     <div class="text-center mt-6">
@@ -94,7 +102,8 @@ export default {
         name: null,
         email: null,
         birthDate: null
-      }
+      },
+      submitting: false
     }
   },
   watch: {
@@ -181,12 +190,19 @@ export default {
         sex: this.sex
       }
 
+      this.submitting = true
       const { status } = await axios.post('/.netlify/functions/submit', answer)
+      this.submitting = false
 
       if (status === 200) {
         localStorage.setItem('sex_quiz_answered', '1')
         this.$router.push('/resultat')
       }
+    }
+  },
+  computed: {
+    submitButtonText () {
+      return this.submitting ? 'Enregistrement en cours' : 'Enregistrer'
     }
   }
 }
