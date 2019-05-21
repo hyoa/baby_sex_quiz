@@ -22,6 +22,8 @@ exports.handler = async function ({ body }, context, callback) {
     (data.birthDate && data.birthDate.trim() !== '' && birthDateTime <= 1570665600000 && birthDateTime >= 1562716800000) &&
     (data.sex && (data.sex === 'm' || data.sex === 'f'))
   ) {
+    data.name = data.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+
     const answer = new AnswerModel(data)
     await answer.save()
   }

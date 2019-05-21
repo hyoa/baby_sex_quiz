@@ -57,8 +57,16 @@ export default {
       }
     })
 
+    const names = data[0].name.map(({ _id, number }) => {
+      return {
+        _id: _id.charAt(0).toUpperCase() + _id.slice(1),
+        number
+      }
+    })
+
     data[0].weight = weights
     data[0].birthDate = dates
+    data[0].name = names
 
     this.data = data[0]
   }
