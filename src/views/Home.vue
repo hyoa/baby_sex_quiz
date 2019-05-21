@@ -59,11 +59,14 @@
         <Input name="email" type="email" label="Email" v-model="email" :error="errors.email"/>
       </div>
       <div class="mt-4 text-center">
+        <div v-if="onError" class="text-red-500 text-xs italic text-center mt-4">
+          Il y a une erreur dans les informations saisies. Vérifie que tous les champs sont bien remplis et que tu as correctement choisis un sexe pour le bébé !
+        </div>
         <button
           class="text-white font-bold py-2 px-4 rounded"
           type="submit"
-          :disabled="submitting"
-          :class="{ 'cursor-not-allowed opacity-50 bg-gray-500' : submitting, 'bg-green-500 hover:bg-green-700 ': !submitting }"
+          :disabled="submitting || onError"
+          :class="{ 'cursor-not-allowed opacity-50 bg-gray-500' : submitting || onError, 'bg-green-500 hover:bg-green-700 ': !submitting && !onError }"
         >
           {{ submitButtonText }}
           <font-awesome-icon v-if="submitting" icon="spinner" spin />
@@ -203,6 +206,14 @@ export default {
   computed: {
     submitButtonText () {
       return this.submitting ? 'Enregistrement en cours' : 'Enregistrer'
+    },
+    onError () {
+      return this.errors.weight !== null ||
+        this.errors.name !== null ||
+        this.errors.birthDate !== null ||
+        this.errors.email !== null ||
+        this.errors.length !== null ||
+        this.errors.sex !== null
     }
   }
 }
